@@ -1,0 +1,72 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+  <script src="js/calculateIntervals.js"></script>
+</head>
+
+<body>
+
+  <!-- Add your site or application content here -->
+  <p>Simplified Interval Conversion Language</p>
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  <script lang="javascript">
+    document.addEventListener('keypress', (event) => {
+      if(event.key == 'Enter')
+        showResult();
+    });
+     function showResult() {
+       let json = getResults(document.getElementById("txtQuery").value)
+       let myObj = JSON.parse(json);
+
+       document.getElementById('results').innerText = JSON.stringify(myObj, undefined, 2);
+     }
+  </script>
+  <table width="100%" valign="top"><tr><td valign="top">
+  <input type="text" width="2000px" id="txtQuery">
+  <p>Sample Queries</p>
+  <p>a OR b</p>
+  <p>a OR b OR c</p>
+  <p>(a OR b OR c)</p>
+  <p>a NEAR5 b</p>
+  <p>(a NEAR5 b) c</p>
+  <p>"a b"</p>
+  <p>"a b v"</p>
+  <p>((((a NEAR3 "b f g") NEAR3 c) NEAR3 d) NEAR3 e)</p>
+  <p>(a NEAR3 (b NEAR3 (c NEAR3 (d NEAR3 e))))</p>
+  <p>(can could) NEAR12 "figur*"</p>
+  <p>(search*) NEAR75 (could* NEAR10 "lat* night")</p>
+  <p>"can* expect*"</p>
+  </td><td>
+  <pre id="results" style="font-size: small"></pre>
+  </td></tr></table>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>
